@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply font-sans;
+  }
+
+  body {
+    @apply bg-paper-100 text-ink-700;
+  }
+
+  h1 {
+    @apply font-display text-ink-900;
+    letter-spacing: -0.01em;
+  }
+
+  /* Visible keyboard focus everywhere — accessibility floor, not decoration */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid #1f8f6b;
+    outline-offset: 2px;
+  }
+
+  input,
+  select,
+  textarea {
+    @apply bg-paper-50;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    @apply border-accent;
+  }
+
+  ::selection {
+    background-color: #fbebce;
+  }
+}
+
+@layer components {
+  /* The signature element: a hand-drawn highlighter stroke, used under the
+     active nav link and other "you are here / this matters" moments. */
+  .highlight-mark {
+    position: relative;
+    display: inline-block;
+  }
+  .highlight-mark::after {
+    content: "";
+    position: absolute;
+    left: -2px;
+    right: -2px;
+    bottom: 1px;
+    height: 0.5em;
+    background: #e2a33d66;
+    border-radius: 2px 6px 3px 5px / 3px 4px 2px 5px;
+    z-index: -1;
+    transform: rotate(-0.6deg);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-ink-900 px-3.5 py-2 text-sm font-medium text-paper-50 transition-colors hover:bg-ink-700 disabled:opacity-50;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg bg-paper-200 px-3.5 py-2 text-sm font-medium text-ink-700 transition-colors hover:bg-paper-300;
+  }
+
+  .btn-toggle-active {
+    @apply rounded-lg bg-accent px-3 py-1.5 text-sm font-medium text-white;
+  }
+
+  .btn-toggle-inactive {
+    @apply rounded-lg bg-paper-200 px-3 py-1.5 text-sm font-medium text-ink-600 hover:bg-paper-300;
+  }
+
+  .field-label {
+    @apply text-sm font-medium text-ink-700;
+  }
+
+  .field-input {
+    @apply mt-1 w-full rounded-lg border border-paper-300 px-3 py-2 text-sm text-ink-900 placeholder:text-ink-300;
+  }
+
+  .card {
+    @apply rounded-lg border border-paper-300 bg-paper-50;
+  }
+
+  .page-eyebrow {
+    @apply font-mono text-xs uppercase tracking-wide text-ink-300;
+  }
+}
