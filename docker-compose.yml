@@ -29,6 +29,9 @@ services:
       - chroma_data:/app/chroma_data
     depends_on:
       - db
+    # --reload is only useful for local dev (auto-restarts on file changes).
+    # The production Dockerfile CMD (used by Render) doesn't include it.
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
   frontend:
     build: ./frontend
